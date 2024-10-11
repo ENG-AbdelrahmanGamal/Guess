@@ -10,12 +10,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText guessInput;
     private Button submitButton;
     private TextView feedbackText;
+    private FloatingActionButton floatingActionButton;
 
     // Create a list to hold player data
     private List<Player> playerList = new ArrayList<>();
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         guessInput = findViewById(R.id.guessInput);
         submitButton = findViewById(R.id.submitButton);
         feedbackText = findViewById(R.id.feedbackText);
+        floatingActionButton = findViewById(R.id.fab);
 
         // Start a new game
         startNewGame();
@@ -53,7 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Please enter a valid number!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 
     private void startNewGame() {
         Random random = new Random();
