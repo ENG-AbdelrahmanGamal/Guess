@@ -8,7 +8,6 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:background="@color/material_dynamic_tertiary70"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
